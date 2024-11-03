@@ -1,29 +1,34 @@
-function addRecommendation() {
-  // Get the message of the new recommendation
-  let recommendation = document.getElementById("new_recommendation");
-  // If the user has left a recommendation, display a pop-up
-  if (recommendation.value != null && recommendation.value.trim() != "") {
-    console.log("New recommendation added");
-    //Call showPopup here
+function showMessage() {
+	document.getElementById("result").style.display = "block";
+};
 
-    // Create a new 'recommendation' element and set it's value to the user's message
-    var element = document.createElement("div");
-    element.setAttribute("class","recommendation");
-    element.innerHTML = "\<span\>&#8220;\</span\>" + recommendation.value + "\<span\>&#8221;\</span\>";
-    // Add this element to the end of the list of recommendations
-    document.getElementById("all_recommendations").appendChild(element); 
-     // Call showPopup function to display confirmation popup
-     showPopup(true);
-    
-    // Reset the value of the textarea
-    recommendation.value = "Thank you for your recommendation!";
-  }
-}
+function compute() {
+	var principal = document.getElementById("principal").value;
+	if(parseInt(principal) < 1) {
+		alert("Enter a positive number");
+		document.getElementById("principal").focus();
+		return;
+	}
 
-function showPopup(bool) {
-  if (bool) {
-    document.getElementById('popup').style.visibility = 'visible'
-  } else {
-    document.getElementById('popup').style.visibility = 'hidden'
-  }
+
+	var rate = document.getElementById("rate").value;
+	var years = document.getElementById("years").value;
+
+	var interest = principal * years * rate / 100;
+
+	var today = new Date();
+	var yearOfWithdrawal = parseInt(today.getFullYear())+parseInt(years);
+
+	document.getElementById("depositmessage").innerHTML = ""+principal;
+	document.getElementById("interestmessage").innerHTML = ""+rate;
+	document.getElementById("amountmessage").innerHTML = ""+interest;
+	document.getElementById("yearmessage").innerHTML = ""+yearOfWithdrawal;
+	showMessage();
+
+	return false;
+};
+
+function showRange() {
+	var rate = document.getElementById("rate").value;
+	document.getElementById("ratevalue").innerHTML = rate;
 }
