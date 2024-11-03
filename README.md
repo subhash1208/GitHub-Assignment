@@ -11,7 +11,6 @@ The **Simple Interest Calculator** is a shell script designed to calculate simpl
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
-- [Contact](#contact)
 
 ## Features
 
